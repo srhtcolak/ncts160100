@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MRN Araştırma / Tahsilat Durumu Sorgulama Sistemi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('Ticaret Bakanlığı Logo Altın Arma TR.jpeg') no-repeat center center fixed;
+      background-size: contain;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #a30000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 10px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-right: 10px;
+      background-color: #a30000;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .note, .contact {
+      background: #f8f8f8;
+      border-left: 4px solid #a30000;
+      padding: 10px;
+      margin-top: 30px;
+    }
+    .login-warning {
+      color: red;
+      font-weight: bold;
+    }
+    .button-group {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>MRN Araştırma / Tahsilat Durumu Sorgulama Sistemi</header>
+  <div class="container">
+
+    <!-- Sorgulama Alanı -->
+    <div class="section">
+      <label for="mrnInput">MRN Giriniz (örneğin 24TR160100001234M5):</label>
+      <input type="text" id="mrnInput" placeholder="MRN numarasını giriniz">
+      <div class="button-group">
+        <button onclick="sorgula()">Sorgula</button>
+        <button onclick="mrnFollowUp()">MRN Follow-Up</button>
+      </div>
+    </div>
+
+    <!-- Notlar -->
+    <div class="note">
+      ⚠️ Sorgulama, NCTS Yerel Koordinatörü tarafından sisteme girilen verileri içermektedir.
+    </div>
+    <div class="note">
+      ⚠️ Bu veriler, bilgi amaçlı olup yasal bir geçerliliği yoktur. Sorgulamalar yalnızca Bursa Gümrük Müdürlüğü'ne ait beyanlara ilişkindir.
+    </div>
+
+    <!-- İletişim -->
+    <div class="contact">
+      <h2 style="color: #b30000; font-weight: bold; text-align: center; margin-bottom: 10px;">İletişim</h2>
+      <p style="font-size: 16px; text-align: center; line-height: 1.6;">
+        👤 <strong>İrtibat:</strong> Serhat Çolak<br>
+        📧 <strong>E-Posta:</strong> s.colak2@ticaret.gov.tr<br>
+        📧 <strong>Kep:</strong> bursagumrukmudurlugu@gtb.hs01.kep.tr<br>
+        📍 <strong>Adres:</strong> Fethiye Organize Sanayi Bölgesi Sarı Cadde No:2 E Blok 16140 Nilüfer / Bursa, Türkiye
+      </p>
+    </div>
+
+    <!-- Giriş Alanı -->
+    <div class="section">
+      <h3>NCTS Koordinatörü Girişi</h3>
+      <input type="text" id="username" placeholder="Kullanıcı Adı">
+      <input type="password" id="password" placeholder="Şifre">
+      <button onclick="adminLogin()">Giriş</button>
+      <div id="loginMessage" class="login-warning"></div>
+    </div>
+  </div>
+
+  <script>
+    function sorgula() {
+      const mrn = document.getElementById("mrnInput").value.trim();
+      if (mrn) {
+        alert("Sorgulama sonucu: MRN " + mrn + " için sistemdeki veri gösterilecek (demo).");
+      } else {
+        alert("Lütfen geçerli bir MRN giriniz.");
+      }
+    }
+
+    function mrnFollowUp() {
+      const mrn = document.getElementById("mrnInput").value.trim();
+      if (mrn) {
+        const url = "https://ec.europa.eu/taxation_customs/dds2/mrn/mrn_home.jsp?Lang=tr&Expand=true&MRN=" + mrn;
+        window.open(url, "_blank");
+      } else {
+        alert("MRN alanı boş olamaz.");
+      }
+    }
+
+    function adminLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const loginMessage = document.getElementById("loginMessage");
+
+      if (username === "21579" && password === "14419907690") {
+        loginMessage.textContent = "";
+        window.location.href = "admin_selection.html";
+      } else {
+        loginMessage.textContent = "Hatalı kullanıcı adı ya da şifre!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yönetici Ekranı</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('Ticaret Bakanlığı Logo Altın Arma TR.jpeg') no-repeat center center fixed;
+      background-size: contain;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #a30000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 40px;
+      text-align: center;
+    }
+    .btn {
+      background-color: #a30000;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      margin: 15px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background-color: #750000;
+    }
+  </style>
+</head>
+<body>
+  <header>Koordinatör Paneli</header>
+  <div class="container">
+    <p>Lütfen yapmak istediğiniz işlemi seçiniz:</p>
+    <button class="btn" onclick="location.href='veri_girisi.html'">📥 Veri Girişi</button>
+    <button class="btn" onclick="location.href='raporlama.html'">📊 Raporlama</button>
+  </div>
+</body>
+</html>

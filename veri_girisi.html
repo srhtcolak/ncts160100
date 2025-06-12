@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Veri Girişi</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label, input, select { display: block; margin: 10px 0; width: 100%; max-width: 400px; }
+    button { background-color: #a30000; color: white; padding: 10px 20px; border: none; }
+    table { margin-top: 20px; width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h1>📥 MRN Veri Girişi</h1>
+  <label>MRN: <input type="text" id="mrn"></label>
+  <label>Statü: 
+    <select id="status">
+      <option value="">Seçiniz</option>
+      <option value="Kabul Edildi">Kabul Edildi</option>
+      <option value="Reddedildi">Reddedildi</option>
+    </select>
+  </label>
+  <label>Tarih: <input type="date" id="date"></label>
+  <label>Rejim Hak Sahibi: <input type="text" id="owner"></label>
+  <label>Açıklama: <input type="text" id="desc"></label>
+  <button onclick="addRow()">Kaydet</button>
+  <table id="dataTable"><thead><tr><th>MRN</th><th>Statü</th><th>Tarih</th><th>Sahibi</th><th>Açıklama</th></tr></thead><tbody></tbody></table>
+  <script>
+    function addRow() {
+      const mrn = document.getElementById("mrn").value;
+      const status = document.getElementById("status").value;
+      const date = document.getElementById("date").value;
+      const owner = document.getElementById("owner").value;
+      const desc = document.getElementById("desc").value;
+      if (!mrn || !status || !date || !owner || !desc) {
+        alert("Lütfen tüm alanları doldurunuz.");
+        return;
+      }
+      const table = document.getElementById("dataTable").querySelector("tbody");
+      const row = `<tr><td>${mrn}</td><td>${status}</td><td>${date}</td><td>${owner}</td><td>${desc}</td></tr>`;
+      table.innerHTML += row;
+    }
+  </script>
+</body>
+</html>

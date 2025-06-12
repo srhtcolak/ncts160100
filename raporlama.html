@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Raporlama</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    button { margin-top: 10px; padding: 10px 20px; background: #a30000; color: #fff; border: none; }
+  </style>
+</head>
+<body>
+  <h1>📊 Raporlama</h1>
+  <label>Başlangıç Tarihi: <input type="date" id="startDate"></label>
+  <label>Bitiş Tarihi: <input type="date" id="endDate"></label>
+  <button onclick="getReport()">Sorgula</button>
+  <div id="reportTable"></div>
+  <script>
+    function getReport() {
+      const start = document.getElementById("startDate").value;
+      const end = document.getElementById("endDate").value;
+      if (!start || !end) {
+        alert("Lütfen tarih aralığını seçiniz.");
+        return;
+      }
+      // Örnek tablo verisi
+      const html = `
+        <table>
+          <tr><th>MRN</th><th>Statü</th><th>Tarih</th></tr>
+          <tr><td>24TR160100009999M5</td><td>Taahhüt Edildi</td><td>${start}</td></tr>
+        </table>
+        <button onclick="exportToExcel()">Excel'e Aktar</button>
+        <button onclick="exportToPDF()">PDF'e Aktar</button>
+      `;
+      document.getElementById("reportTable").innerHTML = html;
+    }
+    function exportToExcel() { alert("Excel'e aktarılıyor... (demo)"); }
+    function exportToPDF() { alert("PDF'e aktarılıyor... (demo)"); }
+  </script>
+</body>
+</html>
